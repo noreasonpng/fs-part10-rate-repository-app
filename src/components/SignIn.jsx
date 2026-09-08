@@ -62,7 +62,9 @@ export const SignInContainer = ({ onSubmit }) => {
         autoCapitalize="none"
         style={[
           styles.input,
-          formik.touched.username && formik.errors.username && styles.inputError,
+          formik.touched.username &&
+            formik.errors.username &&
+            styles.inputError,
         ]}
       />
       {formik.touched.username && formik.errors.username && (
@@ -76,14 +78,18 @@ export const SignInContainer = ({ onSubmit }) => {
         secureTextEntry
         style={[
           styles.input,
-          formik.touched.password && formik.errors.password && styles.inputError,
+          formik.touched.password &&
+            formik.errors.password &&
+            styles.inputError,
         ]}
       />
       {formik.touched.password && formik.errors.password && (
         <Text style={styles.error}>{formik.errors.password}</Text>
       )}
       <Pressable style={styles.button} onPress={formik.handleSubmit}>
-        <Text color="textLight" fontWeight="bold">Sign in</Text>
+        <Text color="textLight" fontWeight="bold">
+          Sign in
+        </Text>
       </Pressable>
     </View>
   );
@@ -95,7 +101,10 @@ const SignIn = () => {
 
   const onSubmit = async (values) => {
     try {
-      const result = await signIn({ username: values.username, password: values.password });
+      const result = await signIn({
+        username: values.username,
+        password: values.password,
+      });
       console.log('Authentication result:', result);
       navigate('/');
     } catch (e) {

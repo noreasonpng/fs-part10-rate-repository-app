@@ -47,12 +47,8 @@ const initialValues = {
 };
 
 const validationSchema = yup.object().shape({
-  ownerName: yup
-    .string()
-    .required('Repository owner name is required'),
-  repositoryName: yup
-    .string()
-    .required('Repository name is required'),
+  ownerName: yup.string().required('Repository owner name is required'),
+  repositoryName: yup.string().required('Repository name is required'),
   rating: yup
     .number()
     .typeError('Rating must be a number')
@@ -60,8 +56,7 @@ const validationSchema = yup.object().shape({
     .min(0, 'Rating must be between 0 and 100')
     .max(100, 'Rating must be between 0 and 100')
     .required('Rating is required'),
-  text: yup
-    .string(),
+  text: yup.string(),
 });
 
 export const ReviewFormContainer = ({ onSubmit }) => {
@@ -78,7 +73,10 @@ export const ReviewFormContainer = ({ onSubmit }) => {
     <View style={styles.container}>
       <View style={styles.fieldContainer}>
         <TextInput
-          style={[styles.input, getFieldError('ownerName') && styles.inputError]}
+          style={[
+            styles.input,
+            getFieldError('ownerName') && styles.inputError,
+          ]}
           placeholder="Repository owner name"
           value={formik.values.ownerName}
           onChangeText={formik.handleChange('ownerName')}
@@ -92,7 +90,10 @@ export const ReviewFormContainer = ({ onSubmit }) => {
       </View>
       <View style={styles.fieldContainer}>
         <TextInput
-          style={[styles.input, getFieldError('repositoryName') && styles.inputError]}
+          style={[
+            styles.input,
+            getFieldError('repositoryName') && styles.inputError,
+          ]}
           placeholder="Repository name"
           value={formik.values.repositoryName}
           onChangeText={formik.handleChange('repositoryName')}
@@ -120,7 +121,11 @@ export const ReviewFormContainer = ({ onSubmit }) => {
       </View>
       <View style={styles.fieldContainer}>
         <TextInput
-          style={[styles.input, styles.multiline, getFieldError('text') && styles.inputError]}
+          style={[
+            styles.input,
+            styles.multiline,
+            getFieldError('text') && styles.inputError,
+          ]}
           placeholder="Review"
           value={formik.values.text}
           onChangeText={formik.handleChange('text')}
@@ -148,7 +153,7 @@ const ReviewForm = () => {
   const onSubmit = async (values) => {
     const { ownerName, repositoryName, rating, text } = values;
 
-    try{
+    try {
       const data = await createReview({
         ownerName,
         repositoryName,
@@ -158,12 +163,12 @@ const ReviewForm = () => {
 
       const repositoryId = data.createReview.repositoryId;
       navigate(`/repositories/${repositoryId}`);
-    }catch (e){
+    } catch (e) {
       console.log(e);
     }
   };
 
-  return <ReviewFormContainer onSubmit={onSubmit}/>;
+  return <ReviewFormContainer onSubmit={onSubmit} />;
 };
 
 export default ReviewForm;

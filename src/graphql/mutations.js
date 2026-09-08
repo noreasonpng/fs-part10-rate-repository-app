@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
- 
+
 export const AUTHENTICATE = gql`
   mutation Authenticate($credentials: AuthenticateInput) {
     authenticate(credentials: $credentials) {
@@ -10,8 +10,8 @@ export const AUTHENTICATE = gql`
 
 export const CREATE_USER = gql`
   mutation CreateUser($user: CreateUserInput) {
-  createUser(user: $user) {
-    username
+    createUser(user: $user) {
+      username
     }
   }
 `;
@@ -33,5 +33,3 @@ export const DELETE_REVIEW = gql`
     deleteReview(id: $deleteReviewId)
   }
 `;
-
-

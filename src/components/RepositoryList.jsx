@@ -1,5 +1,5 @@
 import { FlatList, View, TextInput, StyleSheet } from 'react-native';
-import RepositoryItem from './RepositoryItem'
+import RepositoryItem from './RepositoryItem';
 import { useState } from 'react';
 import useRepositories from '../hooks/useRepositories';
 import useDebounce from '../hooks/useDebounce';
@@ -52,7 +52,10 @@ export const RepositoryListContainer = ({
               autoCapitalize="none"
             />
           </View>
-          <RepositoryOrder selectedOrder={selectedOrder} onOrderChange={onOrderChange} />
+          <RepositoryOrder
+            selectedOrder={selectedOrder}
+            onOrderChange={onOrderChange}
+          />
         </View>
       }
       renderItem={({ item }) => (

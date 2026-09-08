@@ -71,7 +71,9 @@ export const SignUpContainer = ({ onSubmit }) => {
         autoCapitalize="none"
         style={[
           styles.input,
-          formik.touched.username && formik.errors.username && styles.inputError,
+          formik.touched.username &&
+            formik.errors.username &&
+            styles.inputError,
         ]}
       />
       {formik.touched.username && formik.errors.username && (
@@ -85,7 +87,9 @@ export const SignUpContainer = ({ onSubmit }) => {
         secureTextEntry
         style={[
           styles.input,
-          formik.touched.password && formik.errors.password && styles.inputError,
+          formik.touched.password &&
+            formik.errors.password &&
+            styles.inputError,
         ]}
       />
       {formik.touched.password && formik.errors.password && (
@@ -104,11 +108,14 @@ export const SignUpContainer = ({ onSubmit }) => {
             styles.inputError,
         ]}
       />
-      {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation && (
-        <Text style={styles.error}>{formik.errors.passwordConfirmation}</Text>
-      )}
+      {formik.touched.passwordConfirmation &&
+        formik.errors.passwordConfirmation && (
+          <Text style={styles.error}>{formik.errors.passwordConfirmation}</Text>
+        )}
       <Pressable style={styles.button} onPress={formik.handleSubmit}>
-        <Text color="textLight" fontWeight="bold">Sign up</Text>
+        <Text color="textLight" fontWeight="bold">
+          Sign up
+        </Text>
       </Pressable>
     </View>
   );

@@ -46,19 +46,23 @@ describe('RepositoryList', () => {
               'WyJhc3luYy1saWJyYXJ5LnJlYWN0LWFzeW5jIiwxNTg4NjU2NzUwMDc2XQ==',
           },
         ],
-      };  
+      };
 
       await render(
         <MemoryRouter>
           <RepositoryListContainer repositories={repositories} />
         </MemoryRouter>
-      )   
-      
+      );
+
       const repositoryItems = screen.getAllByTestId('repositoryItem');
       const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
-      
-      expect(firstRepositoryItem).toHaveTextContent('jaredpalmer/formikBuild forms in React, without the tearsTypeScript21.9kStars1.6kForks3Reviews88Rating');
-      expect(secondRepositoryItem).toHaveTextContent('async-library/react-asyncFlexible promise-based React data loaderJavaScript1.8kStars69Forks3Reviews72Rating')
+
+      expect(firstRepositoryItem).toHaveTextContent(
+        'jaredpalmer/formikBuild forms in React, without the tearsTypeScript21.9kStars1.6kForks3Reviews88Rating'
+      );
+      expect(secondRepositoryItem).toHaveTextContent(
+        'async-library/react-asyncFlexible promise-based React data loaderJavaScript1.8kStars69Forks3Reviews72Rating'
+      );
     });
   });
 });

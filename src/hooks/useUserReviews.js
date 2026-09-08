@@ -7,7 +7,7 @@ const useUserReviews = () => {
     variables: { includeReviews: true },
   });
 
-  return{
+  return {
     reviews: data?.me?.reviews,
     loading,
     error,

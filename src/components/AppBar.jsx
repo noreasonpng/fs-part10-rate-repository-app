@@ -51,7 +51,7 @@ const AppBar = () => {
           { name: 'Sign up', to: '/signup' },
         ]),
   ].filter(Boolean);
-  
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -63,11 +63,15 @@ const AppBar = () => {
         {tabs.map((tab) =>
           tab.onPress ? (
             <Pressable key={tab.name} onPress={tab.onPress} style={styles.link}>
-              <Text color="textLight" style={styles.text}>{tab.name}</Text>
+              <Text color="textLight" style={styles.text}>
+                {tab.name}
+              </Text>
             </Pressable>
           ) : (
             <Link key={tab.name} to={tab.to} style={styles.link}>
-              <Text color="textLight" style={styles.text}>{tab.name}</Text>
+              <Text color="textLight" style={styles.text}>
+                {tab.name}
+              </Text>
             </Link>
           )
         )}

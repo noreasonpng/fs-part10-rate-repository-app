@@ -39,21 +39,15 @@ const ReviewItem = ({ review }) => {
     ? review.user.username
     : review.repository?.fullName;
 
-  return(
+  return (
     <View style={styles.container}>
       <View style={styles.rating}>
         <Text fontWeight="bold">{review.rating}</Text>
       </View>
       <View style={styles.content}>
-        <Text fontWeight="bold">
-          {heading}
-        </Text>
-        <Text style={styles.date}>
-          {formattedDate}
-        </Text>
-        <Text>
-          {review.text}
-        </Text>
+        <Text fontWeight="bold">{heading}</Text>
+        <Text style={styles.date}>{formattedDate}</Text>
+        <Text>{review.text}</Text>
       </View>
     </View>
   );

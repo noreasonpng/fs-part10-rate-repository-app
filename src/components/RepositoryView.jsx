@@ -63,7 +63,7 @@ const RepositoryView = () => {
     Linking.openURL(repository.url);
   };
 
-  const reviews = repository.reviews?.edges.map(edge => edge.node) || [];
+  const reviews = repository.reviews?.edges.map((edge) => edge.node) || [];
 
   return (
     <FlatList

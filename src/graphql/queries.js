@@ -1,17 +1,16 @@
 import { gql } from '@apollo/client';
 
 export const GET_REPOSITORIES = gql`
-
-  query(
+  query (
     $orderBy: AllRepositoriesOrderBy
     $orderDirection: OrderDirection
     $searchKeyword: String
-  ){
+  ) {
     repositories(
       orderBy: $orderBy
       orderDirection: $orderDirection
       searchKeyword: $searchKeyword
-    ){
+    ) {
       edges {
         node {
           id
@@ -28,8 +27,6 @@ export const GET_REPOSITORIES = gql`
     }
   }
 `;
-
-
 
 export const GET_REPOSITORY = gql`
   query ($id: ID!) {
@@ -61,7 +58,6 @@ export const GET_REPOSITORY = gql`
     }
   }
 `;
-
 
 export const ME = gql`
   query Me($includeReviews: Boolean = false) {

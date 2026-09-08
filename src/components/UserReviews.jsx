@@ -1,4 +1,11 @@
-import { FlatList, View, StyleSheet, Button, Alert, Pressable } from 'react-native';
+import {
+  FlatList,
+  View,
+  StyleSheet,
+  Button,
+  Alert,
+  Pressable,
+} from 'react-native';
 import { Link, useNavigate } from 'react-router-native';
 import ReviewItem from './ReviewItem';
 import Text from './Text';
@@ -29,15 +36,12 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const ItemSeparator = () => <View style={styles.separator} />;
 
 export const UserReviewsContainer = ({ reviews, refetch }) => {
   const [deleteReview] = useDeleteReview();
   const navigate = useNavigate();
-  const reviewNodes = reviews
-    ? reviews.edges.map((edge) => edge.node)
-    : [];
+  const reviewNodes = reviews ? reviews.edges.map((edge) => edge.node) : [];
 
   const handleDelete = (review) => {
     Alert.alert(
@@ -56,7 +60,7 @@ export const UserReviewsContainer = ({ reviews, refetch }) => {
             refetch();
           },
         },
-      ],
+      ]
     );
   };
 
@@ -67,22 +71,22 @@ export const UserReviewsContainer = ({ reviews, refetch }) => {
       renderItem={({ item }) => (
         <View>
           <ReviewItem review={item} />
-            <View style={styles.buttons}>
-              <Pressable
-                style={[styles.button, styles.viewButton]}
-                onPress={() => navigate(`/repositories/${item.repository.id}`)}
-              >
-                <Text style={styles.buttonText}>View repository</Text>
-              </Pressable>
+          <View style={styles.buttons}>
+            <Pressable
+              style={[styles.button, styles.viewButton]}
+              onPress={() => navigate(`/repositories/${item.repository.id}`)}
+            >
+              <Text style={styles.buttonText}>View repository</Text>
+            </Pressable>
 
-              <Pressable
-                style={[styles.button, styles.deleteButton]}
-                onPress={() => handleDelete(item)}
-              >
-                <Text style={styles.buttonText}>Delete review</Text>
-              </Pressable>
-            </View>
+            <Pressable
+              style={[styles.button, styles.deleteButton]}
+              onPress={() => handleDelete(item)}
+            >
+              <Text style={styles.buttonText}>Delete review</Text>
+            </Pressable>
           </View>
+        </View>
       )}
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={ItemSeparator}
@@ -98,7 +102,7 @@ export const UserReviewsContainer = ({ reviews, refetch }) => {
 const UserReviews = () => {
   const { reviews, loading, error, refetch } = useUserReviews();
 
-  if (loading){
+  if (loading) {
     return <Text>Loading</Text>;
   }
   if (error) {
@@ -106,6 +110,5 @@ const UserReviews = () => {
   }
 
   return <UserReviewsContainer reviews={reviews} refetch={refetch} />;
-
 };
 export default UserReviews;
